@@ -1,4 +1,4 @@
-const backendUrl = "https://library-management-system-ql11.onrender.com/s"; // Replace with your Render backend URL
+const backendUrl = "https://library-management-system-ql11.onrender.com/books"; // Replace with your Render backend URL
 
 // Fetch and display books
 async function fetchBooks() {
