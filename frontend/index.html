@@ -1,40 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<h2>Library Management</h2>
+  <header>
+    <h1>Library Management System</h1>
+  </header>
 
-<input id="title" placeholder="Book Title">
-<input id="author" placeholder="Author">
-<button onclick="add()">Add</button>
+  <main>
+    <section id="add-book">
+      <h2>Add Book</h2>
+      <input type="text" id="title" placeholder="Book Title">
+      <input type="text" id="author" placeholder="Author">
+      <button onclick="addBook()">Add Book</button>
+    </section>
 
-<ul id="list"></ul>
+    <section id="books-list">
+      <h2>Books List</h2>
+      <ul id="bookContainer"></ul>
+    </section>
+  </main>
 
-<script>
-const API = "http://localhost:5000/books";
-
-function load(){
- fetch(API).then(res=>res.json()).then(data=>{
-   list.innerHTML="";
-   data.forEach(b=>{
-     list.innerHTML+=`<li>${b.title} - ${b.author}
-     <button onclick="del('${b._id}')">X</button></li>`;
-   })
- })
-}
-
-function add(){
- fetch(API,{
-  method:"POST",
-  headers:{'Content-Type':'application/json'},
-  body:JSON.stringify({title:title.value, author:author.value})
- }).then(load)
-}
-
-function del(id){
- fetch(API+"/"+id,{method:"DELETE"}).then(load)
-}
-
-load();
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
