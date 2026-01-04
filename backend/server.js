@@ -1,14 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const Book = require("./models/Book-");
-
+const Book = require("./models/book");
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // MongoDB connect
-mongoose.connect("mongodb+srv://bharathbharath84528_db_user:mt2JcdtNYOk14Od7@cluster0.kxvnkoy.mongodb.net/?appName=Cluster0")
+mongoose.connect("mongoose.connect(process.env.MONGO_URL)")
 .then(()=>console.log("MongoDB connected"))
 .catch(err=>console.log(err));
 
