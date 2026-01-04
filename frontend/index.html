@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Library Management</h2>
+
+<input id="title" placeholder="Book Title">
+<input id="author" placeholder="Author">
+<button onclick="add()">Add</button>
+
+<ul id="list"></ul>
+
+<script>
+const API = "http://localhost:5000/books";
+
+function load(){
+ fetch(API).then(res=>res.json()).then(data=>{
+   list.innerHTML="";
+   data.forEach(b=>{
+     list.innerHTML+=`<li>${b.title} - ${b.author}
+     <button onclick="del('${b._id}')">X</button></li>`;
+   })
+ })
+}
+
+function add(){
+ fetch(API,{
+  method:"POST",
+  headers:{'Content-Type':'application/json'},
+  body:JSON.stringify({title:title.value, author:author.value})
+ }).then(load)
+}
+
+function del(id){
+ fetch(API+"/"+id,{method:"DELETE"}).then(load)
+}
+
+load();
+</script>
+</body>
+</html>
