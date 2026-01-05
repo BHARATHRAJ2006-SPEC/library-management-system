@@ -10,7 +10,7 @@ async function loadBooks() {
   books.forEach(book => {
     const li = document.createElement("li");
     li.innerHTML = `
-      ${book.title} - ${book.author}
+      <span><strong>${book.title}</strong> — ${book.author}</span>
       <button onclick="deleteBook('${book._id}')">Delete</button>
     `;
     list.appendChild(li);
@@ -18,10 +18,13 @@ async function loadBooks() {
 }
 
 async function addBook() {
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
+  const title = document.getElementById("title").value.trim();
+  const author = document.getElementById("author").value.trim();
 
-  if (!title || !author) return alert("Fill all fields");
+  if (!title || !author) {
+    alert("Please fill all fields");
+    return;
+  }
 
   await fetch(API, {
     method: "POST",
