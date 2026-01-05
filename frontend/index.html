@@ -32,13 +32,20 @@
       <tbody></tbody>
     </table>
 
-    <!-- Search Toggle -->
-    <div class="search-toggle">
-      <input id="searchQuery" placeholder="Search by Title, Author, Category, Year">
-      <button onclick="searchBooks()">Search</button>
-      <button onclick="loadBooks()">Reset</button>
-    </div>
-  </div>
+<!-- Advanced Search Bar -->
+<div class="search-bar">
+  <select id="searchType">
+    <option value="title">Title</option>
+    <option value="author">Author</option>
+    <option value="category">Category</option>
+    <option value="year">Published Year</option>
+  </select>
+
+  <input id="searchInput" placeholder="Search...">
+
+  <button onclick="searchBooks()">Search</button>
+  <button onclick="loadBooks()">Reset</button>
+</div>
 
   <script src="script.js"></script>
 </body>

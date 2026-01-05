@@ -56,16 +56,18 @@ async function deleteBook(id) {
 
 // Search books
 async function searchBooks() {
-  const query = document.getElementById("searchQuery").value.toLowerCase();
+  const keyword = document.getElementById("searchInput").value.toLowerCase();
+  const type = document.getElementById("searchType").value;
+
   const res = await fetch(API);
   const books = await res.json();
 
-  const filtered = books.filter(book =>
-    (book.title && book.title.toLowerCase().includes(query)) ||
-    (book.author && book.author.toLowerCase().includes(query)) ||
-    (book.category && book.category.toLowerCase().includes(query)) ||
-    (book.publishedYear && book.publishedYear.toString().includes(query))
-  );
+  const filtered = books.filter(book => {
+    if (type === "title") return book.title?.toLowerCase().includes(keyword);
+    if (type === "author") return book.author?.toLowerCase().includes(keyword);
+    if (type === "category") return book.category?.toLowerCase().includes(keyword);
+    if (type === "year") return book.publishedYear?.toString().includes(keyword);
+  });
 
   tableBody.innerHTML = "";
   filtered.forEach(book => {
