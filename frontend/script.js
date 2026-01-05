@@ -1,4 +1,4 @@
-const API = "https://library-management-system-ql11.onrender.com/";
+const API = "https://library-management-system-ql11.onrender.com/books";
 
 const list = document.getElementById("bookList");
 
