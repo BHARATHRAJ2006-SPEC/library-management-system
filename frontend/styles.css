@@ -1,111 +1,174 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   background: linear-gradient(120deg, #667eea, #764ba2);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 50px;
-  min-height: 100vh;
+  padding: 40px 0;
 }
 
 .container {
-  background: #fff;
-  width: 90%;
-  max-width: 900px;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  width: 95%;
+  max-width: 1000px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 35px;
+  box-shadow: 0 25px 40px rgba(0,0,0,0.2);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   color: #333;
+  font-size: 28px;
 }
 
-.form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+/* ===== Search Bar ===== */
 
-input {
-  flex: 1 1 200px;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-
-input:focus {
-  border-color: #667eea;
-}
-
-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  background: #667eea;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  background: #5a67d8;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-thead th {
-  text-align: left;
-  padding: 10px;
-  background: #667eea;
-  color: #fff;
-}
-
-tbody td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-tbody tr:hover {
-  background: #f5f5f5;
-}
-
-.action-btn {
-  background: #ff5c5c;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.action-btn:hover {
-  background: #e04444;
-}
-
-.search-toggle {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
 .search-bar {
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 160px 1fr auto auto;
+  gap: 12px;
   margin-bottom: 25px;
 }
 
 .search-bar select,
 .search-bar input {
-  padding: 10px;
-  border-radius: 6px;
+  padding: 11px 12px;
+  border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.search-bar select:focus,
+.search-bar input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.search-bar button {
+  padding: 11px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #667eea;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search-bar button:last-child {
+  background: #6b7280;
+}
+
+.search-bar button:hover {
+  opacity: 0.9;
+}
+
+/* ===== Add Book Form ===== */
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.form input {
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form button {
+  padding: 11px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #22c55e;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.form button:hover {
+  background: #16a34a;
+}
+
+/* ===== Table ===== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+thead {
+  background: #667eea;
+  color: white;
+}
+
+thead th {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+tbody tr {
+  transition: 0.2s;
+}
+
+tbody tr:nth-child(even) {
+  background: #f7f7fb;
+}
+
+tbody tr:hover {
+  background: #eef2ff;
+}
+
+tbody td {
+  padding: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ===== Action Button ===== */
+
+.action-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #ef4444;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  background: #dc2626;
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width: 900px) {
+  .form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-bar {
+    grid-template-columns: 1fr 1fr;
+  }
 }
